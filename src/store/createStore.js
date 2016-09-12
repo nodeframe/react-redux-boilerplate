@@ -6,7 +6,6 @@ import { apiMiddleware } from 'redux-api-middleware';
 import persistState from './middlewares/persistState';
 const loggerMiddleware = createLogger();
 
-
 export default function configureStore(preloadedState = {}) {
 
   const enhancer = compose(
@@ -24,7 +23,7 @@ export default function configureStore(preloadedState = {}) {
   if (module.hot) {
       module.hot.accept('../reducers/root.reducer', () => {
         const reducers = require('../reducers/root.reducer').default;
-        store.replaceReducer(reducers())
+        store.replaceReducer(reducers);
       });
   }
   return store;

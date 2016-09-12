@@ -14,7 +14,7 @@ module.exports = {
   ],
   plugins: [
     "react-hot-loader/babel",
-    
+
     require.resolve('babel-plugin-transform-decorators-legacy'),
     // class { handleClick = () => { } }
     require.resolve('babel-plugin-transform-class-properties'),
@@ -25,6 +25,13 @@ module.exports = {
       // Async functions are converted to generators by babel-preset-latest
       async: false
     }],
+    [require.resolve('babel-plugin-typecheck'), {
+      "disable": {
+        "production": true
+      }
+    }],
+    require.resolve('babel-plugin-syntax-flow'),
+    require.resolve('babel-plugin-transform-flow-strip-types'),
     // Polyfills the runtime needed for async/await and generators
     [require.resolve('babel-plugin-transform-runtime'), {
       helpers: false,
